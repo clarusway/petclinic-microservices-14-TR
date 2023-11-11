@@ -138,7 +138,6 @@ pipeline {
         stage('Run QA Automation Tests'){
             steps {
                 echo "Run the Selenium Functional Test on QA Environment"
-                sh 'sleep 120'
                 sh 'ansible-playbook -vvv --connection=local --inventory 127.0.0.1, --extra-vars "workspace=${WORKSPACE} master_public_ip=${MASTER_PUBLIC_IP}" ./ansible/playbooks/pb_run_selenium_jobs.yaml'
             }
         }
@@ -147,6 +146,7 @@ pipeline {
     post {
         always {
             echo 'Deleting all local images'
+            sh 'sleep 120'
             sh 'docker image prune -af'
             echo 'Delete the Image Repository on ECR'
             sh """
