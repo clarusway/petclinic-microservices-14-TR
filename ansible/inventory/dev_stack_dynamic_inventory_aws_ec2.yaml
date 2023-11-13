@@ -10,7 +10,3 @@ keyed_groups:
     prefix: 'all_instances'
   - key: tags['Role']
     prefix: 'role'
-hostnames:
-  - "ip-address"
-compose:
-  ansible_user: "'ubuntu'"
