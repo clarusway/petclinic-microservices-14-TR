@@ -5,11 +5,6 @@
   - name: change hostnames
     shell: "hostnamectl set-hostname {{ hostvars[inventory_hostname]['private_dns_name'] }}"
 
-  - name: swap off
-    shell: |
-      free -m
-      swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab
-
   - name: Enable the nodes to see bridged traffic
     shell: |
       cat << EOF | sudo tee /etc/sysctl.d/k8s.conf
