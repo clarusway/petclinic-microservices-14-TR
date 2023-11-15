@@ -10,7 +10,7 @@ base_url = "https://www.google.com/"
 driver.get(base_url)
 source = driver.page_source
 
-if "I'm Feeling Lucky" in source:
+if "I'm Feeling Luck" in source:
   print("Test passed")
 else:
   print("Test failed")
